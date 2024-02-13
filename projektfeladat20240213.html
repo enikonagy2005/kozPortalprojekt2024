@@ -25,9 +25,27 @@
           <button class="btn btn-primary register-btn">Regisztráció</button>
         </div>
       </div>
+
+      <h2>Új esemény létrehozzása</h2>
+      <form id="message-form"></form>
+        <div class="form-group">
+          <label for="esemeny">Esemény neve:</label>
+          <input type="text" class="form-control" id="esemeny">
+        </div>
+        <div class="form-group">
+          <label for="helyszin">Helyszín:</label>
+          <input type="text" class="form-control" id="helyszin">
+        </div>
+        <div class="form-group">
+          <label for="sdhi">Jelszó:</label>
+          <input type="text" class="form-control" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Létrehozzás</button>
+    </form> <br><br>
       </div>
     </div>
   </main>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const registerButtons = document.querySelectorAll('.register-btn');
