@@ -86,6 +86,14 @@
 
         })
 
+        db.collection("vendegkonyv").onSnapshot((querySnapshot) => {
+            const messagesList = document.getElementById('messages-list')
+            messagesList.innerHTML = ''
+            querySnapshot.forEach((doc) => {
+                let msg = doc.data()
+              })
+        })
+
   </script>
 </body>
 </html>
