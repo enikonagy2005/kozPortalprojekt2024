@@ -37,10 +37,51 @@
         });
       });
     });
+
+  
   </script>
   
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore-compat.js"></script>
+
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDIObL3U2wewQYxnpaaMMfOmMtDv-jYIMs",
+      authDomain: "kozossegiesemenyek-89fdd.firebaseapp.com",
+      projectId: "kozossegiesemenyek-89fdd",
+      storageBucket: "kozossegiesemenyek-89fdd.appspot.com",
+      messagingSenderId: "627642413067",
+      appId: "1:627642413067:web:5212f6f7b69f2cf7d0970e"
+    }
+
+    const app = firebase.initializeApp(firebaseConfig)
+    const db = firebase.firestore(app)
+
+    document.getElementById('message-form').addEventListener('submit', function (e) {
+            e.preventDefault()
+            const esemeny = document.getElementById('esemeny').value
+            const felhasznalo = document.getElementById('felhasznalo').value
+            const helyszin = document.getElementById('helyszin').value
+            const idopont = document.getElementById('idopont').value
+            const reszlet = document.getElementById('reszlet').value
+
+            db.collection("kozossegiesemenyek").add({
+                esemeny: esemeny,
+                felhasznalo: felhasznalo,
+                helszin: helyszin,
+                idopont: idopont,
+                reszletek: reszlet
+            })
+            .then((docRef) => {
+                console.log(docRef.id)
+            })
+
+        })
+  </script>
 </body>
 </html>
