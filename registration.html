@@ -12,7 +12,7 @@
     <div class="container">
         <h2 class="mt-5">Fórum</h2>
 
-        <form id="message-form">
+        <form id="registration-form">
             <div class="form-group">
                 <label for="username">Felhasználónév:</label>
                 <input type="text" class="form-control" id="username">
@@ -28,5 +28,42 @@
             <button type="submit" class="btn btn-primary">Regisztráció</button>
         </form> <br><br>
     </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"
+      
+        const firebaseConfig = {
+          apiKey: "AIzaSyDIObL3U2wewQYxnpaaMMfOmMtDv-jYIMs",
+          authDomain: "kozossegiesemenyek-89fdd.firebaseapp.com",
+          projectId: "kozossegiesemenyek-89fdd",
+          storageBucket: "kozossegiesemenyek-89fdd.appspot.com",
+          messagingSenderId: "627642413067",
+          appId: "1:627642413067:web:5212f6f7b69f2cf7d0970e"
+        }
+      
+        const app = initializeApp(firebaseConfig)
+        const auth = getAuth(app)
+
+        document.getElementById("registration-form").addEventListener("submit", function (event) { 
+            event.preventDefault();
+
+            var email = document.getElementById("email").value
+            var password = document.getElementById("password").value
+
+            createUserWithEmailAndPassword(auth, email, password)
+        
+            .then(function (userCredential) {
+                var user = userCredential.user
+                console.log("Regisztráció sikeres", user)
+            })
+
+            .catch(function (error) {
+                var errorCode = error.code
+                var errorMessage = error.message
+                console.error("Regisztrációs hiba", errorCode, errorMessage)
+            })
+        })
+      </script>
+      
 </body>
 </html>
